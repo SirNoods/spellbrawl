@@ -1009,6 +1009,21 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="Animation" id="Animation_4r5pv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/dissolveValue")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
 [sub_resource type="Animation" id="Animation_fulsm"]
 resource_name = "dissolve"
 length = 3.0
@@ -1023,21 +1038,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [1.0, 1.0, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_4r5pv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/dissolveValue")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_60mlk"]
@@ -1072,21 +1072,13 @@ shape = SubResource("CapsuleShape2D_8cesh")
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.2
+one_shot = true
 
 [node name="DashCooldown" type="Timer" parent="."]
-wait_time = 5.0
-
-[node name="DebugHud" type="Node2D" parent="."]
-
-[node name="DashCooldownLabel" type="Label" parent="DebugHud"]
-offset_left = -65.0
-offset_top = 60.0
-offset_right = 65.0
-offset_bottom = 83.0
-text = "dashcooldown: 5"
+one_shot = true
 
 [node name="DeathTimer" type="Timer" parent="."]
-wait_time = 5.0
+one_shot = true
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]

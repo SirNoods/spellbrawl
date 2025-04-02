@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cb3u7k67b2t3f"]
+[gd_scene load_steps=5 format=3 uid="uid://cb3u7k67b2t3f"]
 
 [ext_resource type="PackedScene" uid="uid://cb6rb1rtg4flx" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://c78b41p3lltbn" path="res://scenes/basic_background.tscn" id="2_yqjtg"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_uwrxv"]
 
@@ -8,6 +9,8 @@
 noise = SubResource("FastNoiseLite_uwrxv")
 
 [node name="game" type="Node2D"]
+
+[node name="Node2D" parent="." instance=ExtResource("2_yqjtg")]
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 

@@ -1,60 +1,48 @@
 extends CharacterBody2D
 
+# --- Exports ---
 @export var movement_speed : float = 100
-
 @export var dash_speed : float = 600
-var dashing = false
-var can_dash = true
+@export var dash_duration : float = 0.2
+@export var dash_cooldown : float = 1.0
 
-var character_direction : Vector2
-var last_direction = "down"
+# --- States ---
+enum State {IDLE, RUNNING, DASHING, DYING}
+var current_state : State = State.IDLE
+var last_direction = "down" # Stores facing direction for animations
 
-var dying = false
+# --- Timers ---
+@onready var dash_timer: Timer = $DashTimer
+@onready var dash_cooldown_timer: Timer = $DashCooldown
 
 func _ready():
+	# setting timers
+	dash_timer.wait_time = dash_duration
+	dash_cooldown_timer.wait_time = dash_cooldown
+	# resetting dissolve effect
 	$AnimatedSprite2D.material.set_shader_parameter("dissolveValue", 1)
+	current_state = State.IDLE
 
 func _physics_process(delta):
-	character_direction.x = Input.get_axis("move_left", "move_right")
-	character_direction.y = Input.get_axis("move_up", "move_down")
+	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
-	# running	
-	if character_direction and not dying:
-		
-		if dashing:
-			velocity = character_direction * dash_speed
-		else:
-			velocity = character_direction * movement_speed
-		
-		if character_direction.x > 0:
-			if dashing:
-				$AnimatedSprite2D.animation = "dash_right"
-			else:
-				$AnimatedSprite2D.animation = "run_right"
-			last_direction = "right"
-		if character_direction.x < 0:
-			if dashing:
-				$AnimatedSprite2D.animation = "dash_left"
-			else:
-				$AnimatedSprite2D.animation = "run_left"
-			last_direction = "left"
-		if character_direction.y > 0:
-			if dashing:
-				$AnimatedSprite2D.animation = "dash_down"
-			else:
-				$AnimatedSprite2D.animation = "run_down"
-			last_direction = "down"
-		if character_direction.y < 0:
-			if dashing:
-				$AnimatedSprite2D.animation = "dash_up"
-			else:
-				$AnimatedSprite2D.animation = "run_up"
-			last_direction = "up"
-	
-	# idling
-	elif not character_direction and not dying:
-		velocity = velocity.move_toward(Vector2.ZERO, movement_speed)
-		match last_direction:
+	# State Logic
+	match current_state:
+		State.IDLE:
+			handle_idle(input_dir)
+		State.RUNNING:
+			handle_running(input_dir)
+		State.DASHING:
+			handle_dashing(input_dir)
+		State.DYING:
+			handle_dying()
+
+	move_and_slide()
+
+# --- State Handlers ---
+func handle_idle(input_dir: Vector2):
+	velocity = velocity.move_toward(Vector2.ZERO, movement_speed)
+	match last_direction:
 			"up":
 				$AnimatedSprite2D.animation = "idle_up"
 			"left":
@@ -63,38 +51,60 @@ func _physics_process(delta):
 				$AnimatedSprite2D.animation = "idle_right"
 			"down":
 				$AnimatedSprite2D.animation = "idle_down"
-		
-	if Input.is_action_just_pressed("dash") and can_dash:
-		dashing = true
-		can_dash = false
-		$DashTimer.start()
-		$DashCooldown.start()
-	move_and_slide()
+	if input_dir.length() > 0:
+		current_state = State.RUNNING
+	elif Input.is_action_just_pressed("die"):
+		die()
+		current_state = State.DYING
 	
-	if Input.is_action_just_pressed("die"):
-		dying = true
-		player_death()
-	
-	# debugHUD
-	if can_dash:
-		$DebugHud/DashCooldownLabel.text = "dashcooldown: 0"
-		
-	else:
-		$DebugHud/DashCooldownLabel.text = "dashcooldown: " + str(int(round($DashCooldown.time_left)))
 
-func player_death():
+func handle_running(input_dir: Vector2):
+	velocity = input_dir * movement_speed
+	update_last_direction(input_dir)
+	$AnimatedSprite2D.animation = "run_"+last_direction
+	if input_dir.length() == 0:
+		current_state = State.IDLE
+	elif Input.is_action_just_pressed("dash") and dash_cooldown_timer.is_stopped():
+		start_dash(input_dir)
+	elif Input.is_action_just_pressed("die"):
+		current_state = State.DYING
+		die()
+	
+func handle_dashing(input_dir: Vector2):
+	$AnimatedSprite2D.animation = "dash_"+last_direction
+	
+func handle_dying():
+	velocity = Vector2.ZERO
+	
+# --- Helper Functions ---
+func die():
 	$AnimatedSprite2D.animation = "death_"+last_direction
 	$AnimatedSprite2D/AnimationPlayer.play("dissolve")
 	$DeathTimer.start()
-# timers
+	
 
-func _on_dash_timer_timeout() -> void:
-	dashing = false
+func start_dash(input_dir: Vector2):
+	if input_dir.length() == 0:
+		input_dir = Vector2.DOWN.rotated(rotation) # dash in facing direction if no input
+	velocity = input_dir.normalized() * dash_speed
+	current_state = State.DASHING
+	dash_timer.start()
+	dash_cooldown_timer.start()
 
 
-func _on_dash_cooldown_timeout() -> void:
-	can_dash = true
+func update_last_direction(input_dir: Vector2):
+	if input_dir.x > 0:
+		last_direction = "right"
+	elif input_dir.x < 0:
+		last_direction = "left"
+	elif input_dir.y > 0:
+		last_direction = "down"
+	elif input_dir.y < 0:
+		last_direction = "up"
 
+# --- Timer Callbacks ---
+func _on_dash_timer_timeout():
+	current_state = State.RUNNING if Input.get_vector("move_left", "move_right", "move_up", "move_down").length() > 0 else State.IDLE
 
-func _on_death_timer_timeout() -> void:
+func _on_death_timer_timeout():
 	get_tree().reload_current_scene()
