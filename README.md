@@ -3,9 +3,10 @@
 A topdown 2D magical fighting game!
 
 
-## Authors
+## Credits
 
-- [@Goshva](https://github.com/SirNoods)
+- [@Goshva](https://github.com/SirNoods) - Developer, Artist
+- [@Schromp](https://github.com/schromp/) - Head Easter Egg Consultant
 
 ## 🔗 Links
 
