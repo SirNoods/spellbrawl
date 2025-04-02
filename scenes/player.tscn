@@ -1052,6 +1052,7 @@ height = 22.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_qfm1y")
+dash_speed = 500.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_i4ail")
@@ -1078,6 +1079,7 @@ one_shot = true
 one_shot = true
 
 [node name="DeathTimer" type="Timer" parent="."]
+wait_time = 4.0
 one_shot = true
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
