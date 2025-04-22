@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dw2bmpddkrsqd"]
+
+[sub_resource type="GDScript" id="GDScript_14n0t"]
+script/source = "# ProjectileShape.tres  
+var speed = 500  
+var lifetime = 1.5  
+"
+
+[resource]
+script = SubResource("GDScript_14n0t")

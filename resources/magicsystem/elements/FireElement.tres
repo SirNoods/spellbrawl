@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b77iiimpurcxn"]
+
+[sub_resource type="GDScript" id="GDScript_man3x"]
+script/source = "# FireElement.tres
+var damage = 15
+var burn_duration = 2.0
+var color = Color.RED
+"
+
+[resource]
+script = SubResource("GDScript_man3x")

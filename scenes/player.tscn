@@ -1,4 +1,4 @@
-[gd_scene load_steps=155 format=3 uid="uid://cb6rb1rtg4flx"]
+[gd_scene load_steps=156 format=3 uid="uid://cb6rb1rtg4flx"]
 
 [ext_resource type="Texture2D" uid="uid://dron02y6dkd6s" path="res://assets/sprites/tdtemplate/SpriteSheets/3_Template_Dash_Down-Sheet.png" id="1_a8ls1"]
 [ext_resource type="Script" uid="uid://xka1wnkqqeyq" path="res://scripts/player.gd" id="1_qfm1y"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://deau8wfy7q3e0" path="res://assets/sprites/tdtemplate/SpriteSheets/2_Template_Run_Left-Sheet.png" id="14_dt7fs"]
 [ext_resource type="Texture2D" uid="uid://v87l5pownjyk" path="res://assets/sprites/tdtemplate/SpriteSheets/2_Template_Run_Right-Sheet.png" id="15_wqfne"]
 [ext_resource type="Texture2D" uid="uid://dl61a0o8fecpo" path="res://assets/sprites/tdtemplate/SpriteSheets/2_Template_Run_Up-Sheet.png" id="16_wnwbv"]
+[ext_resource type="Texture2D" uid="uid://ms2vu7b87in5" path="res://assets/sprites/UI/crosshair.png" id="19_4r5pv"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4r5pv"]
 frequency = 0.0249
@@ -1081,6 +1082,13 @@ one_shot = true
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 4.0
 one_shot = true
+
+[node name="AimOffset" type="Node2D" parent="."]
+
+[node name="CrosshairTexture" type="Sprite2D" parent="AimOffset"]
+texture = ExtResource("19_4r5pv")
+
+[node name="AimController" type="Node2D" parent="."]
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]

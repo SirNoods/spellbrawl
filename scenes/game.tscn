@@ -18,6 +18,7 @@ noise = SubResource("FastNoiseLite_uwrxv")
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(6.335, 6.335)
 position_smoothing_enabled = true
+position_smoothing_speed = 20.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
