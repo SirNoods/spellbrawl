@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvkpxrdd3aeuw"]
+
+[ext_resource type="Texture2D" uid="uid://cd55egjb6hv17" path="res://assets/sprites/magic/lightning.png" id="1_jl3l2"]
+[ext_resource type="Script" uid="uid://bese7y6y75727" path="res://scripts/basic_projectile.gd" id="1_xq3oj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xq3oj"]
+radius = 2.0
+height = 8.0
+
+[node name="BasicProjectile" type="Area2D"]
+top_level = true
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_xq3oj")
+bullet_speed = 200
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xq3oj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_jl3l2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

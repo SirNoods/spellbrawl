@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://deau8wfy7q3e0" path="res://assets/sprites/tdtemplate/SpriteSheets/2_Template_Run_Left-Sheet.png" id="14_dt7fs"]
 [ext_resource type="Texture2D" uid="uid://v87l5pownjyk" path="res://assets/sprites/tdtemplate/SpriteSheets/2_Template_Run_Right-Sheet.png" id="15_wqfne"]
 [ext_resource type="Texture2D" uid="uid://dl61a0o8fecpo" path="res://assets/sprites/tdtemplate/SpriteSheets/2_Template_Run_Up-Sheet.png" id="16_wnwbv"]
-[ext_resource type="Texture2D" uid="uid://ms2vu7b87in5" path="res://assets/sprites/UI/crosshair.png" id="19_4r5pv"]
+[ext_resource type="PackedScene" uid="uid://c574fx86epd1f" path="res://scenes/aim_system.tscn" id="19_4r5pv"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4r5pv"]
 frequency = 0.0249
@@ -1052,17 +1052,16 @@ radius = 5.0
 height = 22.0
 
 [node name="Player" type="CharacterBody2D"]
+platform_floor_layers = 4294967040
 script = ExtResource("1_qfm1y")
 dash_speed = 500.0
-aim_range = 80.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_i4ail")
 sprite_frames = SubResource("SpriteFrames_vsqmb")
 animation = &"dash_up"
 autoplay = "idle_down"
-frame = 6
-frame_progress = 0.761
+frame_progress = 0.680947
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 root_node = NodePath("../..")
@@ -1084,12 +1083,7 @@ one_shot = true
 wait_time = 4.0
 one_shot = true
 
-[node name="AimOffset" type="Node2D" parent="."]
-
-[node name="CrosshairTexture" type="Sprite2D" parent="AimOffset"]
-texture = ExtResource("19_4r5pv")
-
-[node name="AimController" type="Node2D" parent="."]
+[node name="AimSystem" parent="." instance=ExtResource("19_4r5pv")]
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]

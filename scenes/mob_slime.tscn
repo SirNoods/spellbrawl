@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://nvminsbq3acm"]
+
+[ext_resource type="Script" uid="uid://chyp54v334ilc" path="res://scripts/mob_slime.gd" id="1_0gehn"]
+[ext_resource type="Texture2D" uid="uid://cfa1o1c5nob3d" path="res://assets/sprites/mobs/slime/slime_squishwalk.png" id="2_aranj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mx5l"]
+atlas = ExtResource("2_aranj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4rn4"]
+atlas = ExtResource("2_aranj")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8mfv"]
+atlas = ExtResource("2_aranj")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h828t"]
+atlas = ExtResource("2_aranj")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8wphe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mx5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4rn4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8mfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h828t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b7hob"]
+radius = 7.0
+
+[node name="MobSlime" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+platform_floor_layers = 4294967040
+script = ExtResource("1_0gehn")
+movement_speed = 40
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8wphe")
+autoplay = "default"
+frame = 1
+frame_progress = 0.905977
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b7hob")

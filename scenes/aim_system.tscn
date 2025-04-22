@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c574fx86epd1f"]
+
+[ext_resource type="Script" uid="uid://cg7yv8y65jpl5" path="res://scripts/aim_system.gd" id="1_xxctt"]
+[ext_resource type="Texture2D" uid="uid://ms2vu7b87in5" path="res://assets/sprites/UI/crosshair.png" id="2_ox6cg"]
+
+[node name="AimSystem" type="Node2D"]
+script = ExtResource("1_xxctt")
+aim_range = 100.0
+
+[node name="AimController" type="Node2D" parent="."]
+
+[node name="SpellSpawnpoint" type="Marker2D" parent="AimController"]
+
+[node name="AimOffset" type="Marker2D" parent="."]
+
+[node name="CrosshairSprite" type="Sprite2D" parent="AimOffset"]
+texture = ExtResource("2_ox6cg")
+
+[node name="AttackCooldown" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

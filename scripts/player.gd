@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var dash_speed : float = 600
 @export var dash_duration : float = 0.2
 @export var dash_cooldown : float = 1.0
-@export var aim_range : float = 40.0
+
 
 # --- States ---
 enum State {IDLE, RUNNING, DASHING, DYING}
@@ -41,10 +41,6 @@ func _physics_process(delta):
 			handle_dying()
 
 	move_and_slide()
-	
-	# Handle Aiming (skip during Dying)
-	if current_state != State.DYING:
-		update_aiming(delta)
 
 # --- State Handlers ---
 func handle_idle(input_dir: Vector2):
@@ -83,21 +79,6 @@ func handle_dashing(input_dir: Vector2):
 func handle_dying():
 	velocity = Vector2.ZERO
 
-func update_aiming(delta: float):
-	var mouse_pos := get_global_mouse_position()
-	var camera := get_viewport()
-	var to_mouse := mouse_pos - global_position
-	var distance := to_mouse.length()
-	# Determine final position
-	var aim_pos: Vector2
-	if distance <= aim_range:
-		aim_pos = mouse_pos  # Use exact mouse position when within range
-	else:
-		aim_pos = global_position + (to_mouse.normalized() * aim_range)  # Clamp to max range
-	
-	# Update aiming
-	$AimController.look_at(aim_pos)
-	$AimOffset.position = (aim_pos - global_position)  # Will be exact mouse pos or clamped
 	
 # --- Helper Functions ---
 func die():
@@ -131,3 +112,4 @@ func _on_dash_timer_timeout():
 
 func _on_death_timer_timeout():
 	get_tree().reload_current_scene()
+	

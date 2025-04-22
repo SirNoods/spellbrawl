@@ -22,12 +22,12 @@ constant = Color(1, 0.603922, 0, 1)
 default_input_values = [0, 0.0, 1, 0.1]
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_qwixw"]
-size = Vector2(724, 505)
+size = Vector2(724, 222)
 title = "Noisetexture"
 attached_nodes = PackedInt32Array(11, 2, 3)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_c4sue"]
-size = Vector2(784, 516)
+size = Vector2(784, 302)
 title = "outline"
 attached_nodes = PackedInt32Array(14, 13, 12)
 
@@ -155,7 +155,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-47.4802, -41.7258)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(1920, 260)
