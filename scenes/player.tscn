@@ -1054,6 +1054,7 @@ height = 22.0
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_qfm1y")
 dash_speed = 500.0
+aim_range = 80.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_i4ail")

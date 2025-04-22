@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 # --- Exports ---
 @export var movement_speed : float = 100
 @export var dash_speed : float = 600
@@ -23,6 +24,7 @@ func _ready():
 	# resetting dissolve effect
 	$AnimatedSprite2D.material.set_shader_parameter("dissolveValue", 1)
 	current_state = State.IDLE
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -83,6 +85,7 @@ func handle_dying():
 
 func update_aiming(delta: float):
 	var mouse_pos := get_global_mouse_position()
+	var camera := get_viewport()
 	var to_mouse := mouse_pos - global_position
 	var distance := to_mouse.length()
 	# Determine final position
