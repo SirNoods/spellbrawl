@@ -14,6 +14,10 @@ config/name="spellbrawl"
 run/main_scene="uid://cb3u7k67b2t3f"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 move_up={
