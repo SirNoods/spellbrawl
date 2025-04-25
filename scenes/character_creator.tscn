@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cb8dl1ioj3mei"]
+[gd_scene load_steps=10 format=3 uid="uid://cb8dl1ioj3mei"]
 
 [ext_resource type="Script" uid="uid://b2dni743xx3kr" path="res://scripts/character_creator.gd" id="1_tvdat"]
+[ext_resource type="Script" uid="uid://b4noe5qj2de0y" path="res://scripts/character_creator/body.gd" id="2_loqas"]
 [ext_resource type="Texture2D" uid="uid://cuugysml1is5l" path="res://assets/sprites/player/body/base_animation.png" id="2_xm6ha"]
 [ext_resource type="Texture2D" uid="uid://doxquy2kyfvq6" path="res://assets/sprites/player/hair/hairstyle_1.png" id="3_ucp7b"]
+[ext_resource type="Script" uid="uid://cqdwtcbh7eqan" path="res://scripts/character_creator/hair.gd" id="4_cy6o4"]
 [ext_resource type="Texture2D" uid="uid://d3mlrrpexfx8o" path="res://assets/sprites/player/outfit/outfit_1.png" id="4_oy0w6"]
 [ext_resource type="Texture2D" uid="uid://bug6lkhbt4qx1" path="res://assets/sprites/player/hats/hat_1.png" id="5_f0wb7"]
+[ext_resource type="Script" uid="uid://m32cepd6wfhw" path="res://scripts/character_creator/outfit.gd" id="6_spski"]
+[ext_resource type="Script" uid="uid://c33trnuxav7i3" path="res://scripts/character_creator/hat.gd" id="8_pma8t"]
 
 [node name="Character_Creator" type="Node2D"]
 script = ExtResource("1_tvdat")
@@ -23,6 +27,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="Body" type="Node2D" parent="Skeleton"]
+script = ExtResource("2_loqas")
 
 [node name="Sprite2D" type="Sprite2D" parent="Skeleton/Body"]
 texture = ExtResource("2_xm6ha")
@@ -30,6 +35,7 @@ hframes = 8
 vframes = 8
 
 [node name="Hair" type="Node2D" parent="Skeleton"]
+script = ExtResource("4_cy6o4")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Skeleton/Hair"]
 texture = ExtResource("3_ucp7b")
@@ -37,6 +43,7 @@ hframes = 8
 vframes = 8
 
 [node name="Outfit" type="Node2D" parent="Skeleton"]
+script = ExtResource("6_spski")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Skeleton/Outfit"]
 texture = ExtResource("4_oy0w6")
@@ -44,12 +51,9 @@ hframes = 8
 vframes = 8
 
 [node name="Hat" type="Node2D" parent="Skeleton"]
+script = ExtResource("8_pma8t")
 
 [node name="Sprite2D4" type="Sprite2D" parent="Skeleton/Hat"]
 texture = ExtResource("5_f0wb7")
 hframes = 8
 vframes = 8
-
-[node name="Staff" type="Node2D" parent="Skeleton"]
-
-[node name="Sprite2D5" type="Sprite2D" parent="Skeleton/Staff"]
