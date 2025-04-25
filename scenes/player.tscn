@@ -6,16 +6,20 @@
 [ext_resource type="Texture2D" uid="uid://d3mlrrpexfx8o" path="res://assets/sprites/player/outfit/outfit_1.png" id="4_fjrip"]
 [ext_resource type="Texture2D" uid="uid://bug6lkhbt4qx1" path="res://assets/sprites/player/hats/hat_1.png" id="5_smehm"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ur7pv"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qlg0r"]
+radius = 8.0
+height = 32.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_qfm1y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ur7pv")
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_qlg0r")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+position_smoothing_speed = 20.0
 
 [node name="Skeleton" type="Node2D" parent="."]
 
