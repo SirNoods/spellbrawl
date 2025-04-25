@@ -44,3 +44,15 @@ vframes = 8
 [node name="Name" type="Label" parent="Skeleton"]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="DashTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DashCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="DeathTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

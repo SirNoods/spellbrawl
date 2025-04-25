@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cb3u7k67b2t3f"]
+[gd_scene load_steps=6 format=3 uid="uid://cb3u7k67b2t3f"]
 
 [ext_resource type="PackedScene" uid="uid://c78b41p3lltbn" path="res://scenes/basic_background.tscn" id="1_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://cfwlgmisi6dv3" path="res://assets/GUI/spellbrawltitle.png" id="2_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://cbyly3wmnyc7f" path="res://scenes/player.tscn" id="3_sugp2"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_uwrxv"]
 
@@ -20,3 +21,5 @@ texture = SubResource("NoiseTexture2D_yqjtg")
 [node name="Spellbrawltitle" type="Sprite2D" parent="."]
 position = Vector2(0, -23)
 texture = ExtResource("2_tbgi4")
+
+[node name="Player" parent="." instance=ExtResource("3_sugp2")]
