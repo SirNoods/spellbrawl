@@ -1,0 +1,29 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://djuosubcwon3u"]
+
+[sub_resource type="GDScript" id="GDScript_n05uu"]
+script/source = "class_name TitleOptions
+extends Resource
+
+@export var options: Array[String] = [
+	\"Novice\",
+	\"Wand Waver\",
+	\"Potion Spiller\",
+	\"Bard\",
+	\"Good Boy\",
+	\"Good Girl\",
+	\"Good Entity\",
+	\"Cheese Wizard\",
+	\"Caster\",
+	\"Wizard\",
+	\"Novice\",
+	\"Apprentice\",
+	\"Keiromancer\",
+	\"Top Lad\",
+	\"Top Lass\",
+	\"Romancer\",
+]
+"
+
+[resource]
+script = SubResource("GDScript_n05uu")
+options = Array[String](["Novice", "Wand Waver", "Potion Spiller", "Bard", "Good Boy", "Good Girl", "Good Entity", "Cheese Wizard", "Caster", "Wizard", "Novice", "Apprentice", "Keiromancer", "Top Lad", "Top Lass", "Romancer", "Mud Wizard"])
