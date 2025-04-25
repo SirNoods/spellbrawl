@@ -1,14 +1,5 @@
 extends Node
 
-var title_options: Array[String] = []
-
-func _ready() -> void:
-	var titles_resource = load("res://resources/custom/title_options.tres") as TitleOptions
-	if titles_resource:
-		title_options = title_resource.options
-	else:
-		push_error("Failed to load title options!")
-		title_options = ["Default Title"] # fallback
 # --- Character Customization handling
 
 # body sprite collection
@@ -69,6 +60,26 @@ var outfit_colour_options = [
 	Color(0, 0, 1), # Blue
 	Color(0, 0, 0), # Black
 	Color(1, 1, 1), # White
+]
+
+@export var title_options: = [
+	"Novice",
+	"Wand Waver",
+	"Potion Spiller",
+	"Bard",
+	"Good Boy",
+	"Good Girl",
+	"Good Entity",
+	"Cheese Wizard",
+	"Caster",
+	"Wizard",
+	"Novice",
+	"Apprentice",
+	"Keiromancer",
+	"Top Lad",
+	"Top Lass",
+	"Romancer",
+	"Mud Wizard",
 ]
 
 
