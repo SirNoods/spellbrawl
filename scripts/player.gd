@@ -16,12 +16,21 @@ var last_direction = "down" # Stores facing direction for animations
 @onready var dash_cooldown_timer: Timer = $DashCooldown
 @onready var death_timer: Timer = $DeathTimer
 
+# --- Character Sprites ---
+@onready var body = $Skeleton/Body
+@onready var hair = $Skeleton/Hair
+@onready var outfit = $Skeleton/Outfit
+@onready var hat = $Skeleton/Hat
+@onready var staff = $Skeleton/Staff
+@onready var name_label = $Skeleton/Name
+
 func _ready():
 	# setting timers
 	dash_timer.wait_time = dash_duration
 	dash_cooldown_timer.wait_time = dash_cooldown
 	current_state = State.IDLE
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	initialize_player()
 
 
 func _physics_process(delta):
@@ -77,7 +86,22 @@ func handle_dashing(input_dir: Vector2):
 	pass
 func handle_dying():
 	velocity = Vector2.ZERO
+
+# --- Player initializing
+func initialize_player():
+	# skin tone
+	body.modulate = Global.selected_skin_colour
 	
+	# hair and colour
+	hair.texture = Global.hair_collection[Global.selected_hair]
+	hair.modulate = Global.selected_hair_colour
+	# hat and colour
+	hat.texture = Global.hats_collection[Global.selected_hat]
+	hat.modulate = Global.selected_hat_colour
+	# outfit and colour
+	outfit.texture = Global.outfits_collection[Global.selected_outfit]
+	outfit.modulate = Global.selected_outfit_colour
+
 # --- Helper Functions ---
 func die():
 	death_timer.start()

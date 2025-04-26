@@ -23,3 +23,13 @@ func update_sprite():
 	outfit_sprite.modulate = Global.outfit_colour_options[current_colour_index]
 	Global.selected_outfit = current_sprite
 	Global.selected_outfit_colour = Global.outfit_colour_options[current_colour_index]
+
+
+func _on_collection_button_pressed() -> void:
+	current_outfit_index = (current_outfit_index + 1) % Global.outfits_collection.size()
+	update_sprite()
+
+
+func _on_colour_button_pressed() -> void:
+	current_colour_index = (current_colour_index + 1) % Global.outfit_colour_options.size()
+	update_sprite()

@@ -62,7 +62,7 @@ var outfit_colour_options = [
 	Color(1, 1, 1), # White
 ]
 
-@export var title_options: = [
+var title_options: = [
 	"Novice",
 	"Wand Waver",
 	"Potion Spiller",

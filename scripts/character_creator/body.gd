@@ -23,3 +23,8 @@ func update_sprite():
 	body_sprite.modulate = Global.body_colour_options[current_colour_index]
 	Global.selected_body = current_sprite
 	Global.selected_skin_colour = Global.body_colour_options[current_colour_index]
+
+
+func _on_colour_button_pressed() -> void:
+	current_colour_index = (current_colour_index + 1) % Global.body_colour_options.size()
+	update_sprite()
