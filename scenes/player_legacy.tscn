@@ -1,4 +1,4 @@
-[gd_scene load_steps=156 format=3 uid="uid://cb6rb1rtg4flx"]
+[gd_scene load_steps=156 format=3 uid="uid://d2qvha06pvu6"]
 
 [ext_resource type="Texture2D" uid="uid://dron02y6dkd6s" path="res://assets/sprites/tdtemplate/SpriteSheets/3_Template_Dash_Down-Sheet.png" id="1_a8ls1"]
 [ext_resource type="Script" uid="uid://xka1wnkqqeyq" path="res://scripts/player_legacy.gd" id="1_qfm1y"]

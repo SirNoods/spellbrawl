@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cb8dl1ioj3mei"]
 
-[ext_resource type="Script" uid="uid://b2dni743xx3kr" path="res://scripts/character_creator.gd" id="1_tvdat"]
+[ext_resource type="Script" path="res://scripts/character_creator.gd" id="1_tvdat"]
 [ext_resource type="Script" uid="uid://b4noe5qj2de0y" path="res://scripts/character_creator/body.gd" id="2_loqas"]
 [ext_resource type="Texture2D" uid="uid://cuugysml1is5l" path="res://assets/sprites/player/body/base_animation.png" id="2_xm6ha"]
 [ext_resource type="Texture2D" uid="uid://doxquy2kyfvq6" path="res://assets/sprites/player/hair/hairstyle_1.png" id="3_ucp7b"]
@@ -133,6 +133,7 @@ theme_override_font_sizes/font_size = 25
 text = "->"
 
 [node name="Hair" type="ColorRect" parent="CreatorScreen/ColorRect"]
+layout_mode = 0
 offset_left = 10.0
 offset_top = 150.0
 offset_right = 360.0
@@ -183,6 +184,7 @@ theme_override_font_sizes/font_size = 25
 text = "->"
 
 [node name="Outfit" type="ColorRect" parent="CreatorScreen/ColorRect"]
+layout_mode = 0
 offset_left = 390.0
 offset_top = 10.0
 offset_right = 740.0
@@ -233,6 +235,7 @@ theme_override_font_sizes/font_size = 25
 text = "->"
 
 [node name="Hat" type="ColorRect" parent="CreatorScreen/ColorRect"]
+layout_mode = 0
 offset_left = 390.0
 offset_top = 150.0
 offset_right = 740.0
@@ -244,7 +247,7 @@ layout_mode = 0
 offset_right = 144.0
 offset_bottom = 42.0
 theme_override_font_sizes/font_size = 25
-text = "OUTFIT"
+text = "HAT"
 
 [node name="Label2" type="Label" parent="CreatorScreen/ColorRect/Hat"]
 layout_mode = 1

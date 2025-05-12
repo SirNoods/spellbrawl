@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c78b41p3lltbn" path="res://scenes/basic_background.tscn" id="1_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://cfwlgmisi6dv3" path="res://assets/GUI/spellbrawltitle.png" id="2_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://cbyly3wmnyc7f" path="res://scenes/player.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://cb6rb1rtg4flx" path="res://scenes/player.tscn" id="3_sugp2"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_uwrxv"]
 
@@ -14,7 +14,6 @@ noise = SubResource("FastNoiseLite_uwrxv")
 [node name="Node2D" parent="." instance=ExtResource("1_jyhfs")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 z_index = -2
 texture = SubResource("NoiseTexture2D_yqjtg")
 

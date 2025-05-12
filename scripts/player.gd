@@ -35,7 +35,6 @@ func _ready():
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	print(current_state)
 	# State Logic
 	match current_state:
 		State.IDLE:
@@ -90,14 +89,22 @@ func handle_dying():
 # --- Player initializing
 func initialize_player():
 	# skin tone
+	print(Global.selected_skin_colour)
 	body.modulate = Global.selected_skin_colour
-	
-	# hair and colour
-	hair.texture = Global.hair_collection[Global.selected_hair]
-	hair.modulate = Global.selected_hair_colour
-	# hat and colour
-	hat.texture = Global.hats_collection[Global.selected_hat]
-	hat.modulate = Global.selected_hat_colour
+	# hat vs hair and colour
+	if Global.selected_hat == "none":
+		hair.visible = true
+		hat.visible = false
+		print("No hat selected. Rendering Hair")
+		hair.texture = Global.hair_collection[Global.selected_hair]
+		print("hair"+Global.selected_hair)
+		hair.modulate = Global.selected_hair_colour
+	else:
+		hat.visible = true
+		hair.visible = false
+		print("hat"+Global.selected_hair)
+		hat.texture = Global.hats_collection[Global.selected_hat]
+		hat.modulate = Global.selected_hat_colour
 	# outfit and colour
 	outfit.texture = Global.outfits_collection[Global.selected_outfit]
 	outfit.modulate = Global.selected_outfit_colour
