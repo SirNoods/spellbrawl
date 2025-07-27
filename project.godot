@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="spellbrawl"
-run/main_scene="uid://cb8dl1ioj3mei"
+run/main_scene="uid://cb3u7k67b2t3f"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [autoload]

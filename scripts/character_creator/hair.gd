@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var hair_sprite = $Sprite2D2
+@onready var 
 
 # keys
 var hair_keys = []
