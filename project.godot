@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="spellbrawl"
-run/main_scene="uid://cb3u7k67b2t3f"
+run/main_scene="uid://dg2jqex7hac5l"
 config/features=PackedStringArray("4.4", "Forward Plus")
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
 
 [input]
 
