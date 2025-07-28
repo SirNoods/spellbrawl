@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cb3u7k67b2t3f"]
+[gd_scene load_steps=7 format=3 uid="uid://cb3u7k67b2t3f"]
 
+[ext_resource type="Script" uid="uid://bl0ib1i1ksqwi" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://cb6rb1rtg4flx" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://c78b41p3lltbn" path="res://scenes/basic_background.tscn" id="2_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://cfwlgmisi6dv3" path="res://assets/GUI/spellbrawltitle.png" id="3_lnu2h"]
@@ -10,6 +11,7 @@
 noise = SubResource("FastNoiseLite_uwrxv")
 
 [node name="game" type="Node2D"]
+script = ExtResource("1_lbhrr")
 
 [node name="Node2D" parent="." instance=ExtResource("2_yqjtg")]
 
