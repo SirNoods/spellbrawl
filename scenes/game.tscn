@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cb3u7k67b2t3f"]
 
+[ext_resource type="PackedScene" uid="uid://du2s5p7a5ff8o" path="res://scenes/debug_arena.tscn" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://cb6rb1rtg4flx" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://c78b41p3lltbn" path="res://scenes/basic_background.tscn" id="2_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://cfwlgmisi6dv3" path="res://assets/GUI/spellbrawltitle.png" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://nvminsbq3acm" path="res://scenes/mob_slime.tscn" id="4_lbhrr"]
 
@@ -12,16 +12,12 @@ noise = SubResource("FastNoiseLite_uwrxv")
 
 [node name="game" type="Node2D"]
 
-[node name="Node2D" parent="." instance=ExtResource("2_yqjtg")]
+[node name="Node2D" parent="." instance=ExtResource("1_lbhrr")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 z_index = -2
 texture = SubResource("NoiseTexture2D_yqjtg")
-
-[node name="Spellbrawltitle" type="Sprite2D" parent="."]
-position = Vector2(0, -23)
-texture = ExtResource("3_lnu2h")
 
 [node name="MobSlime2" parent="." instance=ExtResource("4_lbhrr")]
 position = Vector2(-154, 32)
@@ -41,6 +37,10 @@ position = Vector2(143, -12)
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(6.335, 6.335)
+zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
+
+[node name="Spellbrawltitle" type="Sprite2D" parent="."]
+position = Vector2(0, -23)
+texture = ExtResource("3_lnu2h")
