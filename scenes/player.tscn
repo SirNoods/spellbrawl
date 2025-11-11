@@ -1,4 +1,4 @@
-[gd_scene load_steps=156 format=3 uid="uid://cb6rb1rtg4flx"]
+[gd_scene load_steps=158 format=3 uid="uid://cb6rb1rtg4flx"]
 
 [ext_resource type="Texture2D" uid="uid://dron02y6dkd6s" path="res://assets/sprites/tdtemplate/SpriteSheets/3_Template_Dash_Down-Sheet.png" id="1_a8ls1"]
 [ext_resource type="Script" uid="uid://xka1wnkqqeyq" path="res://scripts/player.gd" id="1_qfm1y"]
@@ -1051,6 +1051,15 @@ _data = {
 radius = 5.0
 height = 22.0
 
+[sub_resource type="Gradient" id="Gradient_4r5pv"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_60mlk"]
+gradient = SubResource("Gradient_4r5pv")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
 [node name="Player" type="CharacterBody2D"]
 platform_floor_layers = 4294967040
 script = ExtResource("1_qfm1y")
@@ -1084,6 +1093,11 @@ wait_time = 4.0
 one_shot = true
 
 [node name="AimSystem" parent="." instance=ExtResource("19_4r5pv")]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0, 1, 1, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_60mlk")
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
