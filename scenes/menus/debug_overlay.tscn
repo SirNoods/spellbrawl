@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://d05nhawyc1guk"]
+
+[ext_resource type="Script" uid="uid://b3abgoj5vtuv2" path="res://scripts/menus/debug_overlay.gd" id="1_r2el1"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_r2el1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 158.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="DebugTitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SceneLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PosLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FpsLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerStateLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AimInfoLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -124.0
+offset_bottom = 31.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ToggleSlowmo" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+text = "Toggle Slowmo"
+
+[connection signal="pressed" from="VBoxContainer/ToggleSlowmo" to="." method="_on_toggle_slowmo_pressed"]
