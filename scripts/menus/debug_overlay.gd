@@ -22,17 +22,16 @@ func _process(_delta):
 	if Input.is_action_just_pressed("toggle_debug"):
 		visible_overlay = !visible_overlay
 		visible = visible_overlay
-	
+	# Auto-attach to a player if we don't have one yet
+	if player == null:
+		player = get_tree().get_first_node_in_group("players")
 	scene_label.text = "Scene: %s" % get_tree().current_scene.name
 	if player:
 		pos_label.text = "Pos: (%.1f, %.1f)" % [player.global_position.x, player.global_position.y]
-	
 	if not visible_overlay:
 		return
-	
 	# FPS
 	fps_label.text = "FPS: %d" % Engine.get_frames_per_second()
-
 	# Player info
 	if player:
 		state_label.text = "Player State: %s" % str(player.current_state)

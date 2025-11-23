@@ -17,7 +17,11 @@ var last_direction = "down" # Stores facing direction for animations
 @onready var dash_timer: Timer = $DashTimer
 @onready var dash_cooldown_timer: Timer = $DashCooldown
 
+# --- MP ---
+var is_local := true
+
 func _ready():
+	add_to_group("players")
 	# setting timers
 	dash_timer.wait_time = dash_duration
 	dash_cooldown_timer.wait_time = dash_cooldown
@@ -26,6 +30,8 @@ func _ready():
 	current_state = State.IDLE
 
 func _physics_process(delta):
+	if !is_local: # Don't have remote players process local input
+		return
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	# State Logic

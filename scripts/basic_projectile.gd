@@ -9,5 +9,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body):
 	queue_free()
+	# TODO: In multiplayer, damage should only be applied by the server.
 	if body.has_method("take_damage"):
 		body.take_damage()
