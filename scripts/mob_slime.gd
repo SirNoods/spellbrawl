@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+# Deprecated
 @onready var player = get_node("/root/game/Player/")
 
 @export var movement_speed = 1
