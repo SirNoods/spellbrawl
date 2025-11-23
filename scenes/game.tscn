@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cb3u7k67b2t3f"]
+[gd_scene load_steps=7 format=3 uid="uid://cb3u7k67b2t3f"]
 
 [ext_resource type="PackedScene" uid="uid://du2s5p7a5ff8o" path="res://scenes/levels/debug_arena.tscn" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://cb6rb1rtg4flx" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://cfwlgmisi6dv3" path="res://assets/GUI/spellbrawltitle.png" id="3_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://nvminsbq3acm" path="res://scenes/mob_slime.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://d05nhawyc1guk" path="res://scenes/menus/debug_overlay.tscn" id="5_iywne"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_uwrxv"]
@@ -19,21 +18,6 @@ noise = SubResource("FastNoiseLite_uwrxv")
 visible = false
 z_index = -2
 texture = SubResource("NoiseTexture2D_yqjtg")
-
-[node name="MobSlime2" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(-154, 32)
-
-[node name="MobSlime3" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(-113, -77)
-
-[node name="MobSlime4" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(32, -87)
-
-[node name="MobSlime5" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(59, 71)
-
-[node name="MobSlime" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(143, -12)
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 

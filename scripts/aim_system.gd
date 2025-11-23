@@ -46,7 +46,7 @@ func shoot():
 	var new_projectile = BULLET.instantiate()
 	new_projectile.global_position = $AimController/SpellSpawnpoint.global_position
 	new_projectile.global_rotation = $AimController/SpellSpawnpoint.global_rotation
-	$AimController/SpellSpawnpoint.add_child(new_projectile)
+	$AimController/SpellSpawnpoint.get_tree().current_scene.add_child(new_projectile)
 	
 
 func _on_attack_cooldown_timeout():
